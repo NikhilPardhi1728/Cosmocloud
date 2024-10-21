@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMIHER</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f30fac2c61.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="https://imgbb.com/"><img src="https://i.ibb.co/BwMJCss/unnamed.png" alt="DMIHER Logo"></a>
+                <h1>DMIHER</h1>
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#hospitals">Hospitals</a></li>
+                <li><a href="#appointment">Appointment</a></li>
+            </ul>
+            <i id="bar" class="fa-solid fa-bars"></i>
+        </nav>
+
+        <div class="main">
+            <a href="https://ibb.co/ByvKCDV">
+                <img src="https://i.ibb.co/c6RXr5c/33b3fcf9-642e-4e82-9b24-bbe1d5fd15ca.jpg" alt="Main Image">
+            </a>
+            <div class="mainText">
+                <h1>Datta Meghe Institute of Higher Education and Research</h1>
+                <p>Welcome to DMIHER ICU Navigator
+                Empowering You with Real-Time ICU Ward Information
+
+                At DMIHER, we understand the critical need for immediate access to ICU ward availability. Our website is designed to provide healthcare professionals and patients with up-to-date information on ICU ward availability across various hospitals, ensuring timely access to essential care.</p>
+                <button>Learn More</button>
+            </div>
+        </div>
+
+        <div id="hospitals">
+            <div class="head">
+                <h1>Our Hospitals</h1>
+            </div>
+            <div class="hospitals">
+                <!-- Hospital cards will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <div id="appointment">
+            <div class="head">
+                <h1>Book An Appointment</h1>
+            </div>
+            <div class="form-container">
+                <form class="vertical-form" action="https://submit-form.com/sJG8iKzC5">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" required/>
+
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" pattern=".+@gmail\.com" required/>
+
+                    <label for="phone">Phone Number</label>
+                    <input id="phone" name="phone" type="tel" required/>
+
+                    <label for="disease">Disease</label>
+                    <textarea id="disease" name="disease" cols="15" rows="5" required></textarea>
+
+                    <label for="time">Time for Appointment</label>
+                    <input id="time" name="time" type="time" required/>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal for ICU Ward Booking -->
+        <div id="wardBooking" class="modal">
+            <div class="modalContent">
+                <i id="closeModal" class="fa-solid fa-xmark"></i>
+                <h2>Select ICU Ward</h2>
+                <div class="wards">
+                    <!-- Wards will be dynamically inserted here -->
+                </div>
+                <button id="bookWard">Book Ward</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="text">
+                <h2>About</h2>
+                <p>Datta Meghe Institute of Higher Education and Research is dedicated to improving healthcare through advanced technology and research. Our commitment is to provide high-quality, accessible, and affordable healthcare solutions to enhance the well-being of individuals and communities.</p>
+            </div>
+            <div class="text">
+                <h2>Care</h2>
+                <p>Facility</p>
+                <p>Reviews</p>
+                <p>Support</p>
+                <p>Staff</p>
+            </div>
+            <div class="text">
+                <h2>Address</h2>
+                <p>FEAT, Sawangi</p>
+                <p>Wardha</p>
+            </div>
+            <div class="text">
+                <h2>Connect Us</h2>
+                <p>LinkedIn</p>
+                <p>YouTube</p>
+                <p>Facebook</p>
+                <p>Instagram</p>
+            </div>
+        </div>
+    </div>
+    <script src="hospital.js"></script>
+</body>
+</html>
