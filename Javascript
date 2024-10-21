@@ -1,0 +1,87 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const hospitals = [
+        { name: 'Hospital A', id: 1 },
+        { name: 'Hospital B', id: 2 },
+        { name: 'Hospital C', id: 3 },
+        { name: 'Hospital D', id: 4 }
+    ];
+
+    const wards = [
+        { id: 1, status: 'available' },
+        { id: 2, status: 'available' },
+        { id: 3, status: 'available' },
+        { id: 4, status: 'available' },
+        { id: 5, status: 'available' },
+        { id: 6, status: 'available' },
+        { id: 7, status: 'available' },
+        { id: 8, status: 'available' }
+    ];
+
+    let selectedWardId = null;
+    const modal = document.getElementById('wardBooking');
+    const closeModal = document.getElementById('closeModal');
+    const bookWardButton = document.getElementById('bookWard');
+    const wardsContainer = document.querySelector('.wards');
+    const hospitalsContainer = document.querySelector('.hospitals');
+
+    // Display hospital cards
+    function displayHospitals() {
+        hospitals.forEach(hospital => {
+            const hospitalCard = document.createElement('div');
+            hospitalCard.classList.add('hospitalCard');
+            hospitalCard.textContent = hospital.name;
+            hospitalCard.dataset.id = hospital.id;
+            hospitalCard.addEventListener('click', function() {
+                displayWards(hospital.id);
+            });
+            hospitalsContainer.appendChild(hospitalCard);
+        });
+    }
+
+    // Display wards
+    function displayWards(hospitalId) {
+        wardsContainer.innerHTML = '';
+        wards.forEach(ward => {
+            if (ward.status === 'available') {
+                const wardElement = document.createElement('div');
+                wardElement.classList.add('ward', ward.status);
+                wardElement.textContent = `ICU Ward ${ward.id}`;
+                wardElement.dataset.id = ward.id;
+                wardElement.addEventListener('click', function() {
+                    if (selectedWardId) {
+                        document.querySelector(`.ward[data-id="${selectedWardId}"]`).classList.remove('selected');
+                    }
+                    wardElement.classList.add('selected');
+                    selectedWardId = ward.id;
+                });
+                wardsContainer.appendChild(wardElement);
+            }
+        });
+        modal.style.display = 'flex';
+    }
+
+    // Handle book ward
+    bookWardButton.addEventListener('click', function() {
+        if (selectedWardId) {
+            // Update ward status to booked
+            wards.forEach(ward => {
+                if (ward.id === selectedWardId) {
+                    ward.status = 'booked';
+                }
+            });
+            // Redirect to UPI payment portal
+            window.location.href = `upi://pay?pa=nikhilrpardhi@oksbi&pn=DMIHER&mc=1234&tid=${selectedWardId}&tt=10&am=10&cu=INR&url=https://dmiher.com/`;
+            modal.style.display = 'none';
+            // Update UI
+            displayWards(); // Refresh wards display
+        }
+    });
+
+    // Close modal
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    // Initialize page
+    displayHospitals();
+});
